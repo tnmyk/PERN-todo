@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Todo from "./Todo";
 
-const Todos = ({ todos, setTodos }) => {
+const Todos = ({ todos, setTodos, setEdit }) => {
   const handleDelete = async (id) => {
     try {
       await fetch(`http://localhost:5000/todos/${id}`, {
@@ -20,7 +20,9 @@ const Todos = ({ todos, setTodos }) => {
   return (
     <div className="flex flex-col  items-center mt-10">
       {todos.map((todo) => {
-        return <Todo todo={todo} handleDelete={handleDelete} />;
+        return (
+          <Todo todo={todo} handleDelete={handleDelete} setEdit={setEdit} />
+        );
       })}
     </div>
   );

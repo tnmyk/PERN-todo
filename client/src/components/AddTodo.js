@@ -23,6 +23,7 @@ const AddTodo = ({ setTodos }) => {
         className="p-2 w-1/3 border border-gray-600 rounded"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        placeholder='Enter task'
       />
       <button
         className="bg-blue-400 p-2 rounded text-white"
