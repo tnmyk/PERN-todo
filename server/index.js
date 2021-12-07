@@ -65,7 +65,18 @@ app.put("/todos/:id", async (req, res) => {
   }
 });
 // Delete a todo
-
+app.delete("/todos/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedTodo = await pool.query(
+      "DELETE FROM todo WHERE todo_id = $1",
+      [id]
+    );
+    res.json("A todo was deleted from db");
+  } catch (err) {
+    console.log(err.message);
+  }
+});
 app.get("/", (req, res) => {
   res.send("Server working");
 });
